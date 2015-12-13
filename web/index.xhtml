@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputScript library="js" name="andreas.js" />
+        <h:outputScript library="js" name="jquery-2.1.4.min.js" />
+    </h:head>
+    <h:body>
+        <h:form>
+            <div>
+                <h:commandButton value="Generate SM35 file">
+                    <f:ajax execute="input" render="@form" />
+                </h:commandButton>
+            </div>
+            <div>
+                <h:commandLink value="Download Link" action="#{indexBean.download()}"/>
+            </div>
+            <table id="output" style="width: 80%; margin-left: 10%; font-family: monospace">
+                <c:forEach items="#{indexBean.output}" var="row_of_output_var">
+                    <tr><td><h:outputText
+                                value="${row_of_output_var}"/></td></tr>
+                </c:forEach>
+                
+            </table>
+            <div><h:inputTextarea id="input" 
+                                  value="#{indexBean.input}" 
+                                  style="width: 80%; margin-left: 10%; font-family: monospace;"
+                                  onkeyup="setHeight()"/></div>
+        </h:form>
+    </h:body>
+</html>
+
