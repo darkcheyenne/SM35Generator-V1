@@ -1,5 +1,4 @@
 
-import static com.sun.faces.el.FacesCompositeELResolver.ELResolverChainType.Faces;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
