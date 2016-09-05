@@ -1,4 +1,3 @@
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,6 +19,11 @@ import javax.inject.Named;
 public class IndexBean implements Serializable {
 
     private String input, tmpOutput;
+    private String tmpFilePath;
+    
+    public IndexBean() {
+    tmpFilePath = "X:\\Dropbox\\bdc_recording_java2.txt.txt";
+    }
 
     public String getInput() {
         return input;
@@ -27,6 +31,10 @@ public class IndexBean implements Serializable {
 
     public void setInput(String input) {
         this.input = input;
+    }
+    
+    public String getOperatingSystem() {
+        return System.getProperty("os.name").toLowerCase();
     }
 
     public String[] getOutput() throws UnsupportedEncodingException, FileNotFoundException, IOException {
@@ -65,7 +73,7 @@ public class IndexBean implements Serializable {
         String value = new String(ptext, "UTF-8");
 
         Writer out = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream("X:\\Dropbox\\bdc_recording_java2.txt.txt"), "UTF-8"));
+                new FileOutputStream(tmpFilePath), "UTF-8"));
         try {
             out.write(value);
         } finally {
@@ -79,7 +87,7 @@ public class IndexBean implements Serializable {
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
 
-        File file = new File("X:\\Dropbox\\bdc_recording_java2.txt.txt");
+        File file = new File(tmpFilePath);
         String fileName = file.getName();
         String contentType = ec.getMimeType(fileName); // JSF 1.x: ((ServletContext) ec.getContext()).getMimeType(fileName);
         int contentLength = (int) file.length();
