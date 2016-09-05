@@ -23,6 +23,10 @@ public class IndexBean implements Serializable {
     
     public IndexBean() {
     tmpFilePath = "X:\\Dropbox\\bdc_recording_java2.txt.txt";
+    
+    if (getOperatingSystem().contains("linux")){
+        tmpFilePath = "/GlassFish/tmp/bdc_recording_java2.txt";
+    }
     }
 
     public String getInput() {
