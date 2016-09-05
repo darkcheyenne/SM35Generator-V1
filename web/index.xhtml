@@ -25,14 +25,13 @@
                     <tr><td><h:outputText
                                 value="${row_of_output_var}"/></td></tr>
                 </c:forEach>
-                
+
             </table>
-            <div><h:inputTextarea id="input" 
-                                  value="#{indexBean.input}" 
+            <div><h:inputTextarea id="input"
+                                  value="#{indexBean.input}"
                                   style="width: 80%; margin-left: 10%; font-family: monospace;"
                                   onkeyup="setHeight()"/></div>
         </h:form>
-        </br></br></br>
         <code class="codeblock">
             Server-OS: <h:outputText value="#{indexBean.getOperatingSystem()}"/>
         </code>
