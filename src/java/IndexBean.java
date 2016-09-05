@@ -1,3 +1,4 @@
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,13 +21,13 @@ public class IndexBean implements Serializable {
 
     private String input, tmpOutput;
     private String tmpFilePath;
-    
+
     public IndexBean() {
-    tmpFilePath = "X:\\Dropbox\\bdc_recording_java2.txt.txt";
-    
-    if (getOperatingSystem().contains("linux")){
-        tmpFilePath = "/GlassFish/tmp/bdc_recording_java2.txt";
-    }
+        tmpFilePath = "X:\\Dropbox\\bdc_recording_java2.txt.txt";
+
+        if (System.getProperty("os.name").toLowerCase().contains("linux")) {
+            tmpFilePath = "/GlassFish/tmp/bdc_recording_java2.txt";
+        }
     }
 
     public String getInput() {
@@ -36,7 +37,7 @@ public class IndexBean implements Serializable {
     public void setInput(String input) {
         this.input = input;
     }
-    
+
     public String getOperatingSystem() {
         return System.getProperty("os.name").toLowerCase();
     }
