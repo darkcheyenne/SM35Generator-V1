@@ -7,10 +7,9 @@
     <h:head>
         <title>SM35 - Berechtigungsrollen umbenennen</title>
         <h:outputScript library="js" name="andreas.js" />
-        <h:outputScript library="js" name="jquery-2.1.4.min.js" />
     </h:head>
     <h:body>
-        <h1>SM35 - Berechtigungsrollen umbenennen</h1>
+        <h1 style="text-align: center;">SM35 - Berechtigungsrollen umbenennen</h1>
         <h:form>
             <div>
                 <h:commandButton value="Generate SM35 file">
@@ -32,9 +31,6 @@
                                   style="width: 80%; margin-left: 10%; font-family: monospace;"
                                   onkeyup="setHeight()"/></div>
         </h:form>
-        <code class="codeblock">
-            Server-OS: <h:outputText value="#{bean.getOperatingSystem()}"/>
-        </code>
     </h:body>
 </html>
 
