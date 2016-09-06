@@ -11,32 +11,33 @@
     <h:body>
         <h1 style="text-align: center;">SM35 - Berechtigungsrollen umbenennen</h1>
         <h:form>
-            <div style="width: 80%; margin-left: 10%; padding-top: 50px;">
+            <div style="width: 80%; margin-left: 10%; margin-top: 50px;">
                 Kopieren Sie mit CTRL+C und CTRL+V die Liste der Rollen, welche Sie umbenennen möchten in das Feld unterhalb.
-                <br><br>
-                Tipp: Wenn Sie die Daten in ein Excel-Dokument schreiben (Spalte A = Alte Rolle, Spalte B = Neue Rolle), dann beide Spalten markieren und dann in das Textfeld unterhalb kopieren, dann haben Sie automatisch die richtige Schreibweise.
                 </div>
+            <div style="width: 80%; margin-left: 10%; margin-top: 10px;">
+                Tipp: Wenn Sie die Daten in ein Excel-Dokument schreiben (Spalte A = Alte Rolle, Spalte B = Neue Rolle), dann beide Spalten markieren und dann in das Textfeld unterhalb kopieren, dann haben Sie automatisch die richtige Schreibweise.
+            </div>
             <div style="padding-top: 50px;">
                 <h:inputTextarea id="input"
-                                  value="#{bean.input}"
-                                  style="width: 80%; margin-left: 10%; font-family: monospace;"/>
-                                  </div>
+                                 value="#{bean.input}"
+                                 style="width: 80%; margin-left: 10%; font-family: monospace;"/>
+            </div>
             <div style="width: 80%; margin-left: 10%; padding-top: 10px;">
                 <h:commandButton value="SM35 Aufzeichnung für das umbenennen der Rollen generieren">
                     <f:ajax execute="input" render="@form" />
                 </h:commandButton>
             </div>
-            <div id="download_link" style="padding-top: 10px;">
+            <div id="download_link" style="margin-top: 10px; width: 80%; margin-left: 10%; ">
                 <h:commandLink value="Download Link" action="#{bean.download()}"/>
             </div>
-            <table id="output" style="width: 80%; margin-left: 10%; font-family: monospace; padding-top: 20px; background-color: #DBDBDB;">
+            <table id="output" style="width: 80%; margin-left: 10%; font-family: monospace; margin-top: 20px; background-color: #DBDBDB;">
                 <c:forEach items="#{bean.output}" var="row_of_output_var">
                     <tr><td><h:outputText
                                 value="${row_of_output_var}"/></td></tr>
                 </c:forEach>
 
             </table>
-            
+
         </h:form>
     </h:body>
 </html>
