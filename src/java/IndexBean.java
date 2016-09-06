@@ -13,29 +13,24 @@ import java.nio.file.Files;
 import javax.ejb.Stateless;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
-@Named
+@Named(value = "bean")
 @Stateless
 public class IndexBean implements Serializable {
 
-    private String input, tmpOutput;
-    private String tmpFilePath;
-
-    public IndexBean() {
-        tmpFilePath = "X:\\Dropbox\\bdc_recording_java2.txt.txt";
-
-        if (System.getProperty("os.name").toLowerCase().contains("linux")) {
-            tmpFilePath = "/GlassFish/tmp/bdc_recording_java2.txt";
-        }
-    }
+    private String tmpOutput;
+    
+    @Inject
+    DataBean dataBean;
 
     public String getInput() {
-        return input;
+        return dataBean.getInput();
     }
 
     public void setInput(String input) {
-        this.input = input;
+        dataBean.setInput(input);
     }
 
     public String getOperatingSystem() {
@@ -43,11 +38,11 @@ public class IndexBean implements Serializable {
     }
 
     public String[] getOutput() throws UnsupportedEncodingException, FileNotFoundException, IOException {
-        if (input == null || input.length() == 0) {
+        if (dataBean.getInput() == null || dataBean.getInput().length() == 0) {
             return null;
         }
 
-        String textStr[] = input.split("\\r?\\n");
+        String textStr[] = dataBean.getInput().split("\\r?\\n");
 
         tmpOutput = "";
 
@@ -78,7 +73,7 @@ public class IndexBean implements Serializable {
         String value = new String(ptext, "UTF-8");
 
         Writer out = new BufferedWriter(new OutputStreamWriter(
-                new FileOutputStream(tmpFilePath), "UTF-8"));
+                new FileOutputStream(dataBean.getTmpFilePath()), "UTF-8"));
         try {
             out.write(value);
         } finally {
@@ -92,7 +87,7 @@ public class IndexBean implements Serializable {
         FacesContext fc = FacesContext.getCurrentInstance();
         ExternalContext ec = fc.getExternalContext();
 
-        File file = new File(tmpFilePath);
+        File file = new File(dataBean.getTmpFilePath());
         String fileName = file.getName();
         String contentType = ec.getMimeType(fileName); // JSF 1.x: ((ServletContext) ec.getContext()).getMimeType(fileName);
         int contentLength = (int) file.length();

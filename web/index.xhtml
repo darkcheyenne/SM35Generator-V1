@@ -18,22 +18,22 @@
                 </h:commandButton>
             </div>
             <div>
-                <h:commandLink value="Download Link" action="#{indexBean.download()}"/>
+                <h:commandLink value="Download Link" action="#{bean.download()}"/>
             </div>
             <table id="output" style="width: 80%; margin-left: 10%; font-family: monospace">
-                <c:forEach items="#{indexBean.output}" var="row_of_output_var">
+                <c:forEach items="#{bean.output}" var="row_of_output_var">
                     <tr><td><h:outputText
                                 value="${row_of_output_var}"/></td></tr>
                 </c:forEach>
 
             </table>
             <div><h:inputTextarea id="input"
-                                  value="#{indexBean.input}"
+                                  value="#{bean.input}"
                                   style="width: 80%; margin-left: 10%; font-family: monospace;"
                                   onkeyup="setHeight()"/></div>
         </h:form>
         <code class="codeblock">
-            Server-OS: <h:outputText value="#{indexBean.getOperatingSystem()}"/>
+            Server-OS: <h:outputText value="#{bean.getOperatingSystem()}"/>
         </code>
     </h:body>
 </html>
