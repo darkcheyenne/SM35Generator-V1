@@ -5,6 +5,26 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
+        <!-- Piwik -->
+        <script type="text/javascript">
+            var _paq = _paq || [];
+            _paq.push(['trackPageView']);
+            _paq.push(['enableLinkTracking']);
+            (function () {
+                var u = "//piwik.eberli.me/";
+                _paq.push(['setTrackerUrl', u + 'piwik.php']);
+                _paq.push(['setSiteId', '4']);
+                var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+                g.type = 'text/javascript';
+                g.async = true;
+                g.defer = true;
+                g.src = u + 'piwik.js';
+                s.parentNode.insertBefore(g, s);
+            })();
+        </script>
+        <noscript><p><img src="//piwik.eberli.me/piwik.php?idsite=4" style="border:0;" alt="" /></p></noscript>
+        <!-- End Piwik Code -->
+
         <title>SM35 - Berechtigungsrollen umbenennen</title>
         <h:outputScript library="js" name="andreas.js" />
     </h:head>
@@ -13,7 +33,7 @@
         <h:form>
             <div style="width: 80%; margin-left: 10%; margin-top: 50px;">
                 Kopieren Sie mit CTRL+C und CTRL+V die Liste der Rollen, welche Sie umbenennen möchten in das Feld unterhalb.
-                </div>
+            </div>
             <div style="width: 80%; margin-left: 10%; margin-top: 10px;">
                 Tipp: Wenn Sie die Daten in ein Excel-Dokument schreiben (Spalte A = Alte Rolle, Spalte B = Neue Rolle), dann beide Spalten markieren und dann in das Textfeld unterhalb kopieren, dann haben Sie automatisch die richtige Schreibweise.
             </div>
@@ -37,8 +57,10 @@
                 </c:forEach>
 
             </table>
-
         </h:form>
+        <p>
+            <a href="http://git.eberli.me/darkcheyenne/SM35Generator-Alt">Link zum Quelltext im GIT-Repository</a> 
+        </p>
     </h:body>
 </html>
 
